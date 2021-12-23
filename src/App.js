@@ -30,24 +30,24 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "black";
       showAlert("success", "Dark mode is enabled")
-      document.title = "Dark mode";
+      document.title = "TextUtils App | Dark Mode";
     }
     else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("danger", "Dark mode is disabled")
-      document.title = "Light mode";
+      document.title = "TextUtils App | Light Mode";
     }
   }
   return (
 
     <Router>
-      <Navbar Home="TextUtils" about="About" mode={mode} toggleMode={changeMode} />
+      <Navbar Home="TextUtils" about="About" mode={mode}    toggleMode={changeMode} />
       <Alert alert={alert} />
       <div className="container" >
       <Routes>
       <Route exact path="/" element={<TextForm heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} toggleMode={changeMode} />    } />
-      <Route path="/about" element={<About />}  />
+      <Route path="/about"  element={<About mode={mode}  />}  />
       </Routes>
       </div>
     </Router>

@@ -30,6 +30,8 @@ export default function TextForm(props) {
         setText(event.target.value)
     }
     const [text, setText] = useState("");
+
+
     return (
         <div style={{ backgroundColor: props.mode === "dark" ? 'black' : "white", color: props.mode === "dark" ? "white" : "black" }}>
             <div className="container"  >
@@ -38,18 +40,18 @@ export default function TextForm(props) {
                     <label htmlFor="mytext"></label>
                     <textarea className="form-control" id="mytext" placeholder='Enter Text value' onChange={handleOnChange} value={text} rows="8"></textarea>
                 </div>
-                <button className="btn btn-info mx-1 my-1" onClick={convertUppercase}>Convert to Uppercase</button>
-                <button className="btn btn-info mx-1 my-1" onClick={convertLowercase}>Convert to Lowercase</button>
-                <button className="btn btn-info mx-1 my-1" onClick={clearText}>Clear Text</button>
-                <button className="btn btn-info mx-1 my-1" onClick={copyText}>Copy Text</button>
-                <button className="btn btn-info mx-1 my-1" onClick={removeSpace}>Remove Space</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={convertUppercase}>Convert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={convertLowercase}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={clearText}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={copyText}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={removeSpace}>Remove Space</button>
             </div>
             <div className="container my-3">
                 <h2>Your text summary</h2>
                 <p>Word {text.split(" ").filter((element)=>{return element.length!==0}).length} and Character {text.length}</p>
                 <p> {text.split(" ").length * 0.08} Minutes read</p>
                 <h2>Preview</h2>
-                <p> {text.length > 0 ? text : "Enter some text into input box"}</p>
+                <p> {text.length > 0 ? text : "Nothing for review"}</p>
             </div>
         </div>
     )
